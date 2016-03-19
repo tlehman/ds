@@ -10,15 +10,15 @@ func NewQueue() *Queue {
 	return &Queue{l: list.New()}
 }
 
-func (q *Queue) Enqueue(v int) {
+func (q *Queue) Enqueue(v interface{}) {
 	q.l.PushFront(v)
 }
 
-func (q *Queue) Dequeue() int {
+func (q *Queue) Dequeue() interface{} {
 	e := q.l.Back()
-	v := e.Value.(int)
+	v := e.Value
 	q.l.Remove(e)
-	return int(v)
+	return v
 }
 
 func (q *Queue) Len() int {
